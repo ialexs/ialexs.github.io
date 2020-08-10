@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="author" content="ialexs" />
+    <meta name="robots" content="index, follow"/>
+
+    <meta property="og:title" content="My Pi"/>
+    <meta property="og:url" content="/my-pi.html"/>
+    <meta property="og:site_name" content="~/"/>
+    <meta property="og:type" content="article"/>
+
+    <link rel="canonical" href="/my-pi.html" />
+
+    <title>My Pi | ~/</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" />
+    <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" />
+
+    <link rel="stylesheet" type="text/css" href="/theme/css/main.css" />
+
+    <script type="text/javascript">var switchTo5x=true;</script>
+    <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+    <script type="text/javascript">
+        stLight.options({
+            publisher: "",
+            doNotHash: false,
+            doNotCopy: false,
+            hashAddressBar: false
+        });
+    </script>
+</head>
+
+<body id="index">
+    <div class="row-fluid">
+        <div class="span10 offset1">
+            <header id="banner" >
+                <h1>
+                    <a href="/">~/ </a>
+                </h1>
+                <nav class="navbar">
+                    <div class="navbar-inner">
+                        <ul class="nav">
+                            <li class="active"><a href="/category/pi.html">pi</a></li>
+                        </ul>
+
+                    </div>
+                </nav>
+            </header><!-- /#banner -->
+        </div>
+    </div>
+
+    <div class="row-fluid">
+        <div class="span10 offset1">
+            <div class="row-fluid">
+<div class="span10 offset1">
+  <section>
+    <article>
+      <header>
+        <h1 class="entry-title">
+          <a href="/my-pi.html" rel="bookmark"
+             title="Permalink to My Pi">My Pi</a></h1>
+      </header>
+      <div class="entry-content">
+<footer class="post-info">
+    <address class="vcard author">
+        by <a class="url fn" href="/author/ialexs.html">ialexs</a>
+    </address>
+
+    in <a href="/category/pi.html">pi</a>
+
+    on 2020-08-10
+
+
+
+
+    
+</footer><!-- /.post-info -->
+
+        <p><a href="https://twitter.com/ialexs/status/1291382626150805504"><img alt="sdCard_16GB" src="images/img-sdcard.jpg"></a>
+<a href="https://twitter.com/ialexs/status/1287370766778953728"><img alt="raspi_3b+" src="images/img-raspi.jpg"></a></p>
+<hr>
+<h2>The Raspberry Pi</h2>
+<p>Raspberry Pi 3B+ from Kios Robot https://tokopedia.com/kiosrobot</p>
+<p>This will be a headless computer. No need for desktop/etc.</p>
+<ul>
+<li>Download Raspbian Lite: https://www.raspberrypi.org/downloads/raspberry-pi-os/</li>
+<li>Install guide: https://www.raspberrypi.org/documentation/installation/installing-images/README.md</li>
+</ul>
+<p>Don't need WiFi. Disable wifi, add: <code>dtoverlay=pi3-disable-wifi</code> to file <code>/boot/config.txt</code>
+- https://blog.sleeplessbeastie.eu/2018/12/31/how-to-disable-onboard-wifi-and-bluetooth-on-raspberry-pi-3/</p>
+<h2>ISP bandwidth check.</h2>
+<p>Using Speedtest.net. Details in Does My ISP Sucks https://github.com/ialexs/doesmyispsucks</p>
+<h2>Scheduled torrent.</h2>
+<p>Using the <code>transmission-daemon</code> and <code>transmission-cli</code> from Transmission: https://transmissionbt.com/download</p>
+<ul>
+<li>Pretty straight forward info: https://linuxconfig.org/how-to-set-up-transmission-daemon-on-a-raspberry-pi-and-control-it-via-web-interface</li>
+<li>Saving download to home NAS: <code>sudo mount -t nfs &lt;NAS_IPADDR&gt;:/nfs/Public /home/pi/torrent/</code></li>
+</ul>
+<blockquote>
+<p>Findings:</p>
+<p>The Transmission configuration file <code>/etc/transmission-daemon/settings.json</code> reseted back to default upon restarting transmission service.</p>
+<p>Don't care much. Dirty solution:
+- Keep a modified settings in another file. Overwrite the configuration file.
+- Just reload service (don't restart)</p>
+</blockquote>
+<h2>Blink lights when ISP slowing down.</h2>
+<p>Will write detail later.</p>
+<p>Testing https://github.com/quentinsf/qhue with Phillips Hue Bridge.</p>
+<p>Currently using IFTTT with Fingbox
+- https://notenoughtech.com/news/fing-fingbox-and-ifttt
+- Fingbox https://www.fing.com/products/fingbox</p>
+<h2>Auto DM ISP</h2>
+<p>Will write detail later.</p>
+<p>DM ISP when result DoesMyISPSucks result :shit: for more than two fifteen-minutes interval.</p>
+<p>Using:</p>
+<ul>
+<li>Twitter's <code>twurl</code> - https://github.com/twitter/twurl</li>
+<li>@sferik t - https://github.com/sferik/t</li>
+</ul>
+<p>Easier using <code>t</code>.</p>
+<p>Keeping <code>twurl</code> to learn Twitter's API end-points.</p>
+
+      </div><!-- /.entry-content -->
+
+    </article>
+  </section>
+</div>
+            </div>
+        </div>
+    </div>
+
+    <footer id="site-footer">
+        <div class="row-fluid">
+            <div class="span10 offset1">
+                <address>
+                    <p>
+                        This blog is proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                    </p>
+                    <p>
+                        <a href="http://github.com/jsliang/pelican-fresh/">Fresh</a> is a responsive theme designed by <a href="http://jsliang.com/">jsliang</a> and <a href="https://github.com/jsliang/pelican-fresh/graphs/contributors">contributors</a>.
+                        Special thanks to <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a> and <a href="http://getbootstrap.com/">Twitter Bootstrap</a>.
+                    </p>
+                </address>
+            </div>
+        </div>
+    </footer>
+
+    <script src="//code.jquery.com/jquery.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/2.3.2/js/bootstrap.min.js"></script>
+</body>
+</html>
