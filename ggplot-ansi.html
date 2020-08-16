@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="author" content="ialexs" />
+    <meta name="robots" content="index, follow"/>
+
+    <meta property="og:title" content="Minimalistic terminal plotting"/>
+    <meta property="og:url" content="/ggplot-ansi.html"/>
+    <meta property="og:site_name" content="./ialexs"/>
+    <meta property="og:type" content="article"/>
+
+    <!-- pelican-fresh mod /ialexs -->
+    <meta property="og:image" content="https://repository-images.githubusercontent.com/285783945/d8f97580-dfc5-11ea-8902-ae08c6ef4bc7"/>
+    <meta property="twitter:title" content="./ialexs"/>
+    <meta property="twitter:image:src" content="https://repository-images.githubusercontent.com/285783945/d8f97580-dfc5-11ea-8902-ae08c6ef4bc7"/>
+    <meta property="twitter:card" content="summary_large_image"/>
+    <!-- pelican-fresh mod /ialexs -->
+
+    <!-- from git@github.com:kplaube/extended_meta.git -->
+    <meta name="description" content="Minimalistic terminal plotting">
+    <meta name="keywords" content="ggplot ansi html">
+    <meta property="og:description" content="Minimalistic terminal plotting">
+    <!-- from git@github.com:kplaube/extended_meta.git -->
+
+    <link rel="canonical" href="/ggplot-ansi.html" />
+
+    <title>Minimalistic terminal plotting | ./ialexs</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" />
+    <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" />
+
+    <link rel="stylesheet" type="text/css" href="/theme/css/main.css" />
+
+    <script type="text/javascript">var switchTo5x=true;</script>
+    <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+    <script type="text/javascript">
+        stLight.options({
+            publisher: "",
+            doNotHash: false,
+            doNotCopy: false,
+            hashAddressBar: false
+        });
+    </script>
+</head>
+
+<body id="index">
+    <div class="row-fluid">
+        <div class="span10 offset1">
+            <header id="banner" >
+                <h1>
+                    <a href="/">./ialexs </a>
+                </h1>
+                <nav class="navbar">
+                    <div class="navbar-inner">
+                        <ul class="nav">
+                            <li class="active"><a href="/category/misc.html">misc</a></li>
+                            <li ><a href="/category/pi.html">pi</a></li>
+                        </ul>
+
+                    </div>
+                </nav>
+            </header><!-- /#banner -->
+        </div>
+    </div>
+
+    <div class="row-fluid">
+        <div class="span10 offset1">
+            <div class="row-fluid">
+<div class="span10 offset1">
+  <section>
+    <article>
+      <header>
+        <h1 class="entry-title">
+          <a href="/ggplot-ansi.html" rel="bookmark"
+             title="Permalink to Minimalistic terminal plotting">Minimalistic terminal plotting</a></h1>
+      </header>
+      <div class="entry-content">
+<footer class="post-info">
+    <address class="vcard author">
+        by <a class="url fn" href="/author/ialexs.html">ialexs</a>
+    </address>
+
+    in <a href="/category/misc.html">misc</a>
+
+    on 2020-08-16
+
+
+
+
+    
+</footer><!-- /.post-info -->
+
+        <p><a href="https://twitter.com/ialexs/status/1293164114924036099"><img src="images/img-gnuplot.jpg" alt="twitter post" style="width:400px"></a></p>
+<h1>Goal:</h1>
+<p>Create chart from csv. From a terminal, minimalistic style, no fancy stuff.</p>
+<h1>Toys:</h1>
+<ul>
+<li><a href="http://www.gnuplot.info/">gnuplot</a> - main tools for plotting chart</li>
+<li><a href="https://github.com/dkogan/feedgnuplot">feedgnuplot</a> - quick plot using
+  <code>gnuplot</code></li>
+</ul>
+<p>.</p>
+<p>For a quick plot, just use <a href="https://github.com/dkogan/feedgnuplot"><code>feedgnuplot</code></a>. Goal achieved.</p>
+<p>For more options, go crazy dive into <code>gnuplot</code> itself. Create HTML page using <code>ansi2html</code>.</p>
+<ul>
+<li><a href="https://pypi.org/project/ansi2html/">ansi2html</a> - If you want to create HTML page from the ANSI chart</li>
+</ul>
+<blockquote>
+<p><em>Findings:</em></p>
+<ul>
+<li>Put some ANSI color to <code>gnuplot</code> chart by <code>set terminal ansi256</code>.</li>
+<li>For more control of the final HTML, create a separate .css ANSI color file with <code>ansi2html -H &gt; ansi.css</code></li>
+</ul>
+</blockquote>
+<h3>Comparison, with, and without ANSI</h3>
+<p>Without ANSI color:</p>
+<p><img alt="" src="./images/img-chart-not_ansi.png"></p>
+<p>With ANSI256 color:</p>
+<p><img alt="" src="./images/img-chart-ansi.png"></p>
+<hr>
+<p>The <code>gnuplot</code> script:</p>
+<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">Perabotan</span> <span class="n">lenong</span><span class="p">.</span> <span class="n">Setting</span> <span class="n">gnuplot</span>
+
+<span class="o">#</span> <span class="k">Set</span> <span class="n">the</span> <span class="n">legend</span> <span class="n">inside</span> <span class="n">the</span> <span class="n">chart</span>
+<span class="k">set</span> <span class="k">key</span> <span class="n">inside</span>
+
+<span class="o">#</span> <span class="k">Set</span> <span class="n">the</span> <span class="n">title</span><span class="p">.</span> <span class="s1">&#39;email&#39;</span> <span class="o">=</span> <span class="k">variable</span> <span class="n">passed</span> <span class="k">from</span> <span class="n">bash</span> <span class="n">script</span>
+<span class="k">set</span> <span class="n">title</span> <span class="n">email</span>
+
+<span class="o">#</span> <span class="n">Tell</span> <span class="n">gnuplot</span> <span class="n">the</span> <span class="k">first</span> <span class="k">column</span> <span class="k">is</span> <span class="n">a</span> <span class="s1">&#39;time&#39;</span>
+<span class="k">set</span> <span class="n">xdata</span> <span class="k">time</span>
+
+<span class="o">#</span> <span class="n">Define</span> <span class="n">the</span> <span class="n">format</span>
+<span class="k">set</span> <span class="n">timefmt</span> <span class="ss">&quot;%Y-%m-%d&quot;</span>
+
+<span class="o">#</span> <span class="n">Plot</span> <span class="n">the</span> <span class="n">x</span> <span class="n">axis</span> <span class="k">with</span> <span class="nb">date</span><span class="o">-</span><span class="k">month</span> <span class="k">only</span>
+<span class="k">set</span> <span class="n">format</span> <span class="n">x</span> <span class="ss">&quot;%m-%b&quot;</span>
+
+<span class="o">#</span> <span class="k">Set</span> <span class="k">output</span> <span class="k">to</span> <span class="n">ANSI256</span> <span class="n">colour</span><span class="p">,</span> <span class="k">and</span> <span class="k">size</span>
+<span class="k">set</span> <span class="n">terminal</span> <span class="n">dumb</span> <span class="n">ansi256</span> <span class="mi">150</span><span class="p">,</span><span class="mi">22</span>
+
+<span class="o">#</span> <span class="n">Toy</span> <span class="n">this</span> <span class="k">if</span> <span class="n">want</span> <span class="k">to</span> <span class="n">export</span> <span class="k">to</span> <span class="n">png</span>
+<span class="o">#</span> <span class="k">set</span> <span class="n">terminal</span> <span class="n">png</span> <span class="n">medium</span> <span class="k">size</span> <span class="mi">640</span><span class="p">,</span><span class="mi">480</span>
+
+<span class="o">#</span> <span class="k">Set</span> <span class="n">y</span> <span class="n">label</span>
+<span class="k">set</span> <span class="n">ylabel</span> <span class="ss">&quot;TIME&quot;</span> <span class="k">offset</span> <span class="nb">character</span> <span class="mi">5</span><span class="p">,</span><span class="mi">9</span>
+
+<span class="o">#</span> <span class="n">Plot</span> <span class="n">col</span> <span class="mi">1</span> <span class="n">vs</span> <span class="n">col</span> <span class="mi">2</span><span class="p">,</span> <span class="n">col</span> <span class="mi">1</span> <span class="n">vs</span> <span class="n">col</span> <span class="mi">3</span>
+<span class="n">plot</span> <span class="n">file</span> <span class="k">using</span> <span class="mi">1</span><span class="p">:</span><span class="mi">2</span> <span class="k">with</span> <span class="n">lines</span> <span class="n">title</span> <span class="ss">&quot;Checked In&quot;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span> <span class="k">using</span> <span class="mi">1</span><span class="p">:</span><span class="mi">3</span> <span class="k">with</span> <span class="n">lines</span> <span class="n">title</span> <span class="ss">&quot;Marked 9:00AM&quot;</span>
+</pre></div>
+
+
+<p>CSV sample:</p>
+<div class="highlight"><pre><span></span><span class="err">2020-03-17 08:10:36 09:00</span>
+<span class="err">2020-03-18 08:11:20 09:00</span>
+<span class="err">2020-03-19 07:34:21 09:00</span>
+<span class="err">2020-03-20 08:33:34 09:00</span>
+<span class="err">2020-03-23 09:31:57 09:00</span>
+<span class="err">2020-03-24 08:37:39 09:00</span>
+<span class="err">2020-03-26 07:32:05 09:00</span>
+<span class="err">...</span>
+<span class="err">...</span>
+</pre></div>
+
+
+<h3>Links:</h3>
+<ul>
+<li><a href="https://raymii.org/s/tutorials/GNUplot_tips_for_nice_looking_charts_from_a_CSV_file.html">GNUplot tips for nice looking charts from a CSV file</a></li>
+</ul>
+
+      </div><!-- /.entry-content -->
+
+    </article>
+  </section>
+</div>
+            </div>
+        </div>
+    </div>
+
+    <footer id="site-footer">
+        <div class="row-fluid">
+            <div class="span10 offset1">
+                <address>
+                    <p>
+                        This blog is proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                    </p>
+                    <p>
+                        <a href="http://github.com/jsliang/pelican-fresh/">Fresh</a> is a responsive theme designed by <a href="http://jsliang.com/">jsliang</a> and <a href="https://github.com/jsliang/pelican-fresh/graphs/contributors">contributors</a>.
+                        Special thanks to <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a> and <a href="http://getbootstrap.com/">Twitter Bootstrap</a>.
+                    </p>
+                </address>
+            </div>
+        </div>
+    </footer>
+
+    <script src="//code.jquery.com/jquery.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/2.3.2/js/bootstrap.min.js"></script>
+</body>
+</html>

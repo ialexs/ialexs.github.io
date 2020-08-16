@@ -1,2 +1,0 @@
-# ialexs.github.io
-~\o/
