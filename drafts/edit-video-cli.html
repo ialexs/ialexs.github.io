@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="author" content="ialexs" />
+    <meta name="robots" content="index, follow"/>
+
+    <meta property="og:title" content="Quick edit video from command line"/>
+    <meta property="og:url" content="/drafts/edit-video-cli.html"/>
+    <meta property="og:site_name" content="./ialexs"/>
+    <meta property="og:type" content="article"/>
+
+    <!-- pelican-fresh mod /ialexs -->
+    <meta property="og:image" content="https://repository-images.githubusercontent.com/285783945/d8f97580-dfc5-11ea-8902-ae08c6ef4bc7"/>
+    <meta property="twitter:title" content="./ialexs"/>
+    <meta property="twitter:image:src" content="https://repository-images.githubusercontent.com/285783945/d8f97580-dfc5-11ea-8902-ae08c6ef4bc7"/>
+    <meta property="twitter:card" content="summary"/>
+    <!-- pelican-fresh mod /ialexs -->
+
+    <!-- from git@github.com:kplaube/extended_meta.git -->
+    <!-- from git@github.com:kplaube/extended_meta.git -->
+
+    <link rel="canonical" href="/drafts/edit-video-cli.html" />
+
+    <title>Quick edit video from command line | ./ialexs</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" />
+    <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" />
+
+    <link rel="stylesheet" type="text/css" href="/theme/css/main.css" />
+
+    <script type="text/javascript">var switchTo5x=true;</script>
+    <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+    <script type="text/javascript">
+        stLight.options({
+            publisher: "",
+            doNotHash: false,
+            doNotCopy: false,
+            hashAddressBar: false
+        });
+    </script>
+</head>
+
+<body id="index">
+    <div class="row-fluid">
+        <div class="span10 offset1">
+            <header id="banner" >
+                <h1>
+                    <a href="/">./ialexs </a>
+                </h1>
+                <nav class="navbar">
+                    <div class="navbar-inner">
+                        <ul class="nav">
+                            <li class="active"><a href="/category/misc.html">misc</a></li>
+                            <li ><a href="/category/pi.html">pi</a></li>
+                        </ul>
+
+                    </div>
+                </nav>
+            </header><!-- /#banner -->
+        </div>
+    </div>
+
+    <div class="row-fluid">
+        <div class="span10 offset1">
+            <div class="row-fluid">
+<div class="span10 offset1">
+  <section>
+    <article>
+      <header>
+        <h1 class="entry-title">
+          <a href="/drafts/edit-video-cli.html" rel="bookmark"
+             title="Permalink to Quick edit video from command line">Quick edit video from command line</a></h1>
+      </header>
+      <div class="entry-content">
+<footer class="post-info">
+    <address class="vcard author">
+        by <a class="url fn" href="/author/ialexs.html">ialexs</a>
+    </address>
+
+    in <a href="/category/misc.html">misc</a>
+
+    on 2020-08-18
+
+        |
+        tags:         <a href="/tag/misc.html">misc</a>
+        <a href="/tag/video.html">video</a>
+        <a href="/tag/ffmpeg.html">ffmpeg</a>
+
+
+
+    
+</footer><!-- /.post-info -->
+
+        <h3>Background/goal:</h3>
+<p><img alt="mpv" src="images/img-mpv.png"></p>
+<p>Sometimes my workflow need a quick video/audio manipulation.</p>
+<p>No time for GUI mouse-click-click video editing app.</p>
+<h3>Toys:</h3>
+<ul>
+<li><a href="https://mpv.io">mpv</a> - Cross platform media player.</li>
+<li><a href="https://ffmpeg.org">ffmpeg</a> - Anything audio-video. Record, convert, stream, or even summon Kraken with it.</li>
+<li><a href="https://youtube-dl.org/">youtube-dl</a> - One ring to rule them all. Download video from (almost) <a href="images/cal2020.txt"><em>any</em></a> video sites.</li>
+</ul>
+<p>Go crazy into <code>ffmpeg</code> <a href="https://ffmpeg.org/documentation.html">documentation</a> or <a href="https://stackoverflow.com/questions/tagged/ffmpeg">discussions</a>.</p>
+<p>Below are my frequent actions. Will add more (if there's any)</p>
+<hr>
+<h4>Play/seek video time</h4>
+<p>Play: <code>mpv boring_long_video.mp4</code> or <code>mpv *</code></p>
+<p>Seek time:</p>
+<ul>
+<li><code>o</code> - Show onscreen display</li>
+<li><code>[</code> <code>]</code> - decrease/increase playback speed</li>
+<li><code>Shift+Ctrl+BACKSPACE</code> - mark position.</li>
+</ul>
+<p>More in <code>mpv</code> <a href="https://mpv.io/manual/master/">documentation</a></p>
+<hr>
+<h4>Cut video</h4>
+<p>From minutes 44:24 up to 49 seconds (ref: <a href="https://stackoverflow.com/a/18449609/559903">link</a>)</p>
+<div class="highlight"><pre><span></span><span class="err">ffmpeg -ss 00:44:24 -i file.mp4 -to 00:00:49 -c copy file-copy.mp4</span>
+</pre></div>
+
+
+<hr>
+<h4>Create empty video</h4>
+<ul>
+<li>With image (ref: <a href="https://yeupou.wordpress.com/2016/01/21/create-an-mp4-with-black-screen-and-silent-audio-with-ffmpeg/">link</a>):</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="err">ffmpeg -loop 1 -i image.png -t 900 -r 1 -c:v libx264 image.mp4</span>
+</pre></div>
+
+
+<ul>
+<li>Without image (ref: <a href="https://stackoverflow.com/questions/22710099/ffmpeg-create-blank-screen-with-text-video">link</a>):</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="err">ffmpeg -f lavfi -i color=c=gray:s=320x240:d=10 \</span>
+<span class="err">-vf &quot;drawtext=text=&#39;BIJY&#39;:fontcolor=white&quot; output.mp4</span>
+</pre></div>
+
+
+<hr>
+<h4>Reverse &amp; flip video</h4>
+<p>Reverse (ref: <a href="https://video.stackexchange.com/questions/17738/how-to-use-ffmpeg-command-for-reverse-video">link</a>):</p>
+<div class="highlight"><pre><span></span><span class="err">ffmpeg -i vid.mp4 -vf reverse -af areverse rev.mp4</span>
+</pre></div>
+
+
+<p>Flip horizontal/vertical (ref: <a href="https://duxyng.wordpress.com/2013/04/07/rotateflip-video-with-ffmpeg/">link</a>):</p>
+<div class="highlight"><pre><span></span><span class="err">ffmpeg -i vid.mp4 -vf vflip -c:a copy vflip.mp4</span>
+<span class="err">ffmpeg -i vid.mp4 -vf hflip -c:a copy hflip.mp4</span>
+</pre></div>
+
+
+<p>Rotate 90-&gt; or &lt;-90:</p>
+<div class="highlight"><pre><span></span><span class="err">ffmpeg -i vid.mp4 -vf transpose=1 -c:a copy rotate.mp4</span>
+<span class="err">ffmpeg -i vid.mp4 -vf transpose=2 -c:a copy rotate.mp4</span>
+</pre></div>
+
+
+<hr>
+<h4>Subtitling</h4>
+<p>Burn subtitle (<a href="https://en.wikipedia.org/wiki/SubRip">.srt</a> file) <em>into</em> video file (ref: <a href="https://trac.ffmpeg.org/wiki/HowToBurnSubtitlesIntoVideo">link</a>):</p>
+<div class="highlight"><pre><span></span><span class="err">ffmpeg -i test.mp4 \</span>
+<span class="err">-vf &quot;subtitles=subtitlefile.srt:force_style=&#39;Fontsize=40,PrimaryColour=&amp;Hffffff&amp;&#39;&quot; \</span>
+<span class="err"> -c:a copy test-subtitle.mp4</span>
+</pre></div>
+
+
+<hr>
+<h4>Fix video for Twitter post</h4>
+<p>If somehow video not accepted by Twitter (don't ask why) (ref: <a href="https://gist.github.com/nikhan/26ddd9c4e99bbf209dd7">link</a>, <a href="http://pimentoso.blogspot.com/2016/01/convert-videos-for-twitter-using-ffmpeg.html">link</a>):</p>
+<div class="highlight"><pre><span></span><span class="err">ffmpeg -i test.mov -vcodec libx264 \</span>
+<span class="err">-vf &#39;scale=640:trunc(ow/a/2)*2&#39; \</span>
+<span class="err">-acodec aac -vb 1024k -minrate 1024k -maxrate 1024k \</span>
+<span class="err">-bufsize 1024k -ar 44100 -strict experimental -r 30 test.mp4</span>
+</pre></div>
+
+
+<hr>
+
+      </div><!-- /.entry-content -->
+
+    </article>
+  </section>
+</div>
+            </div>
+        </div>
+    </div>
+
+    <footer id="site-footer">
+        <div class="row-fluid">
+            <div class="span10 offset1">
+                <address>
+                    <p>
+                        This blog is proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                    </p>
+                    <p>
+                        <a href="http://github.com/jsliang/pelican-fresh/">Fresh</a> is a responsive theme designed by <a href="http://jsliang.com/">jsliang</a> and <a href="https://github.com/jsliang/pelican-fresh/graphs/contributors">contributors</a>.
+                        Special thanks to <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a> and <a href="http://getbootstrap.com/">Twitter Bootstrap</a>.
+                    </p>
+                </address>
+            </div>
+        </div>
+    </footer>
+
+    <script src="//code.jquery.com/jquery.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/2.3.2/js/bootstrap.min.js"></script>
+</body>
+</html>

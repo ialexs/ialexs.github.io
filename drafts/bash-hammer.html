@@ -5,10 +5,10 @@
     <meta name="author" content="ialexs" />
     <meta name="robots" content="index, follow"/>
 
-    <meta property="og:title" content="Categories for ./ialexs"/>
-    <meta property="og:url" content="/categories.html"/>
+    <meta property="og:title" content="Bash"/>
+    <meta property="og:url" content="/drafts/bash-hammer.html"/>
     <meta property="og:site_name" content="./ialexs"/>
-    <meta property="og:type" content="website"/>
+    <meta property="og:type" content="article"/>
 
     <!-- pelican-fresh mod /ialexs -->
     <meta property="og:image" content="https://repository-images.githubusercontent.com/285783945/d8f97580-dfc5-11ea-8902-ae08c6ef4bc7"/>
@@ -20,9 +20,9 @@
     <!-- from git@github.com:kplaube/extended_meta.git -->
     <!-- from git@github.com:kplaube/extended_meta.git -->
 
-    <link rel="canonical" href="/categories.html" />
+    <link rel="canonical" href="/drafts/bash-hammer.html" />
 
-    <title>Categories for ./ialexs</title>
+    <title>Bash | ./ialexs</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" />
@@ -52,7 +52,7 @@
                 <nav class="navbar">
                     <div class="navbar-inner">
                         <ul class="nav">
-                            <li ><a href="/category/misc.html">misc</a></li>
+                            <li class="active"><a href="/category/misc.html">misc</a></li>
                             <li ><a href="/category/pi.html">pi</a></li>
                         </ul>
 
@@ -65,36 +65,85 @@
     <div class="row-fluid">
         <div class="span10 offset1">
             <div class="row-fluid">
-<div class="span9">
-    <section>
-    <h1>Categories for ./ialexs</h1>
+<div class="span10 offset1">
+  <section>
+    <article>
+      <header>
+        <h1 class="entry-title">
+          <a href="/drafts/bash-hammer.html" rel="bookmark"
+             title="Permalink to Bash">Bash</a></h1>
+      </header>
+      <div class="entry-content">
+<footer class="post-info">
+    <address class="vcard author">
+        by <a class="url fn" href="/author/ialexs.html">ialexs</a>
+    </address>
 
-    <dl>
-        <dd><a href="/category/misc.html">misc (3)</a></dd>
-        <dd><a href="/category/pi.html">pi (1)</a></dd>
-    </dl>
-    </section>
-</div>
-<div class="span3">
-    <section id="sidebar">
-            <div>
-                <h2>Browse content by</h2>
-                <ul class="fa-ul">
-                <li><a href="/categories.html"><i class="fa-li fa fa-tags"></i> Categories</a></li>
-                <li><a href="/archives.html"><i class="fa-li fa fa-calendar"></i> Dates</a></li>
-                <li><a href="/tags.html"><i class="fa-li fa fa-tag"></i> Tags</a></li>
+    in <a href="/category/misc.html">misc</a>
 
-                </ul>
-            </div><!-- /.browse -->
-            <div>
-                <h2>Social</h2>
-                <ul>
-                    <li><a href="https://twitter.com/ialexs">@ialexs</a></li>
-                    <li><a href="https://github.com/ialexs">github.com/ialexs</a></li>
-                </ul>
-            </div><!-- /.social -->
-<!-- /.Tags -->
-    </section><!-- /#sidebar -->
+    on 2020-08-23
+
+        |
+        tags:         <a href="/tag/misc.html">misc</a>
+        <a href="/tag/bash.html">bash</a>
+        <a href="/tag/rsync.html">rsync</a>
+
+
+
+    
+</footer><!-- /.post-info -->
+
+        <p><img alt="content/images/img-bash.png" src="content/images/img-bash.png"></p>
+<p>When you have a hammer, everything looks like a nail</p>
+<p>Why I love my hammer, the shell?
+Simply to get the job done, without any GUI get in the way.</p>
+<p>The following few of my are my all time fav hammer.</p>
+<p>It's only 'the tip' of the mighty bash hammer</p>
+<p><em>All batteries included within your MacOS, or Linux.</em></p>
+<h3>Compare directories</h3>
+<p>Quick compare two directories.</p>
+<div class="highlight"><pre><span></span><span class="gh">diff -rq DIRECTORY1 DIRECTORY2</span>
+</pre></div>
+
+
+<h3>Find any string</h3>
+<p>Find any string, within any files, buried within layers of directories.</p>
+<div class="highlight"><pre><span></span><span class="err">grep -rsniH &#39;gembel&#39; *</span>
+</pre></div>
+
+
+<h3>Copy/sync everything to anywhere</h3>
+<p>If you move tons of files, here and there, then <code>rsync</code> is your friend</p>
+<p>Basic:</p>
+<div class="highlight"><pre><span></span><span class="err">rsync -avhP --delete SOURCE/ DEST</span>
+</pre></div>
+
+
+<p>Over SSH:</p>
+<div class="highlight"><pre><span></span><span class="err">rsync -avhP --progress [FOLDER/FILES] user@server:/PATH/ON/DESTINATION</span>
+</pre></div>
+
+
+<p>Over SSH with private key:</p>
+<div class="highlight"><pre><span></span><span class="err">rsync -avhP -e &quot;ssh -vv -i YOURKEY&quot; username@HOST:~/remote/directory/ localdirectory</span>
+</pre></div>
+
+
+<p>Go crazy, exclude list of files with <code>--exclude-from 'file-list.txt'</code></p>
+<p>The exclude file list understand 'space', wildcards, and regex statement</p>
+<div class="highlight"><pre><span></span><span class="o">*</span><span class="p">.</span><span class="n">txt</span><span class="w"></span>
+<span class="o">[</span><span class="n">dD</span><span class="o">]</span><span class="n">esktop</span><span class="p">.</span><span class="n">ini</span><span class="w"></span>
+<span class="k">Temporary</span><span class="w"> </span><span class="n">Items</span><span class="w"></span>
+</pre></div>
+
+
+<p>Go down <code>rsync</code> rabbit hole, <a href="https://www.thegeekstuff.com/2011/01/rsync-exclude-files-and-folders/">link</a>.</p>
+<p>-</p>
+
+      </div><!-- /.entry-content -->
+
+    </article>
+  </section>
 </div>
             </div>
         </div>
